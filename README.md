@@ -12,6 +12,9 @@ some of these are prohibitively expensive.
 This project is a proof-of-concept showing that Deep Learning can provide a
 solution for detecting such obstacles.
 
+## Video Demo
+[![Video Demo](https://i.imgur.com/AyZCMec.jpg)](https://www.youtube.com/watch?v=s1mhek5CAnw)
+
 ## Our Approach
 
 The basis of our strategy is to integrate detected obstacle locations into
