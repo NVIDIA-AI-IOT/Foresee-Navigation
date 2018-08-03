@@ -22,7 +22,7 @@ git apply "$ROOT_DIR/resnet-tf-1_3.patch"
 
 mkdir -p "$ROOT_DIR/temp"
 if [ ! -f "$ROOT_DIR/temp/model_all.tar.gz" ]; then
-    wget "http://download945.mediafire.com/1yjbaybtmbeg/kvhzimialk8rtwn/model_all.tar.gz" -O "$ROOT_DIR/temp/model_all.tar.gz"
+    wget "https://nvidia.box.com/shared/static/ykoy0s2h94ekl2ge7g52mi9g0l76jlkp.gz" -O "$ROOT_DIR/temp/model_all.tar.gz"
 fi
 tar -xaf "$ROOT_DIR/temp/model_all.tar.gz" -C "$DS_DIR"
 
