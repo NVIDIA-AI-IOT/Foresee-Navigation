@@ -1,0 +1,13 @@
+# jackal packages
+- git:
+    local-name: jackal_robot
+    uri: https://github.com/jackal/jackal_robot.git
+    version: indigo-devel
+- git:
+    local-name: jackal
+    uri: https://github.com/jackal/jackal.git
+    version: kinetic-devel
+- git:
+    local-name: rplidar_ros
+    uri: https://github.com/robopeak/rplidar_ros.git
+    version: master

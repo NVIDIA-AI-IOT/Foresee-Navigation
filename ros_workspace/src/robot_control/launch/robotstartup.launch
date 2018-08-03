@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="dev" default="/dev/ttyACM0"/>
+    <arg name="baud" default="115200"/>
+    <arg name="address" default="128"/>
+    <arg name="max_abs_linear_speed" default="2"/>
+    <arg name="max_abs_angular_speed" default="2"/>
+    <arg name="acc_lim" default="200"/>
+    <arg name="ticks_per_meter" default="2263.6"/>
+    <arg name="base_width" default="0.431"/>
+    <arg name="run_diag" default="true"/>
+
+    <node if="$(arg run_diag)" pkg="roboclaw_node" type="roboclaw_pyscript.py" name="roboclaw_node">
+        <param name="~dev" value="$(arg dev)"/>
+        <param name="~baud" value="$(arg baud)"/>
+        <param name="~address" value="$(arg address)"/>
+        <param name="~max_abs_linear_speed" value="$(arg max_abs_linear_speed)"/>
+        <param name="~max_abs_angular_speed" value="$(arg max_abs_angular_speed)"/>
+        <param name="~acc_lim" value="$(arg acc_lim)"/>
+        <param name="~ticks_per_meter" value="$(arg ticks_per_meter)"/>
+        <param name="~base_width" value="$(arg base_width)"/>
+    </node>
+
+</launch>

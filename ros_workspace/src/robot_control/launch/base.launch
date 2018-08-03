@@ -1,0 +1,48 @@
+<launch>
+    <include file="$(find robot_control)/launch/jackalstartup.launch" />
+
+    <node pkg="joy" type="joy_node" name="joy_node">
+        <param name="dev" value="/dev/input/js0"/>
+        <param name="autorepeat_rate" value="10.0"/>
+    </node>
+
+    <node pkg="robot_control" type="watchdog.py" name="watchdog" />
+    <node pkg="robot_control" type="js_enable.py" name="js_enable" />
+
+    <node pkg="tf" type="static_transform_publisher" name="front_camera_pos" args="0.15 0 0.27 0 0 0 base_link front_camera 5" />
+
+    <node pkg="bosch_bno055_driver" type="bno055_node.py" name="bno055_node">
+        <param name="frame_id" value="base_link"/>
+        <param name="publish_topic" value="imu/data_raw"/>
+    </node>
+
+    <include file="$(find robot_control)/launch/rplidar.launch" />
+
+    <!--<node pkg="imu_filter_madgwick" type="imu_filter_node" name="imu_filter">
+        <rosparam>
+            gain: 0.1
+            zeta: 0.001
+            publish_tf: false
+            use_mag: false
+        </rosparam>
+    </node> -->
+
+    <node pkg="robot_localization" type="ekf_localization_node" name="custom_ekf_localization"> 
+        <param name="frequency" value="10000"/>
+        <param name="two_d_mode" value="true"/>
+
+        <param name="odom0" value="/jackal_velocity_controller/odom"/>
+        <param name="odom0_differential" value="true"/>
+        <rosparam param="odom0_config">[true, true, true,    false, false, false,    true, true, true,    false, false, false,    false, false, false]</rosparam>
+
+        <param name="imu0" value="/imu/data_raw"/>
+        <rosparam param="imu0_config">[false, false, false,    true, true, true,    false, false, false,    true, true, true,    false, false, false]</rosparam>
+        <param name="imu0_differential" value="false"/>
+
+        <param name="odom_frame" value="odom"/>
+        <param name="base_link_frame" value="base_link"/>
+        <param name="world_frame" value="odom"/>
+
+        <param name="print_diagnostics" value="true"/>
+    </node>  
+</launch>

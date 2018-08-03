@@ -1,0 +1,18 @@
+<launch>
+    <arg name="map_file" default="map.yaml"/>
+
+    <include file="$(find robot_control)/launch/base.launch" />
+    <include file="$(find robot_control)/launch/amcl.launch">
+        <arg name="map_file" value="$(arg map_file)" /> 
+    </include>
+  
+    <include file="$(find robot_control)/launch/navstack.launch" />
+
+    <!-- Allow enable / disable with joystick -->
+    <node pkg="joy" type="joy_node" name="joy_node">
+        <param name="dev" value="/dev/input/js0"/>
+        <param name="autorepeat_rate" value="10.0"/>
+    </node>
+
+
+</launch>

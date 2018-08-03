@@ -1,0 +1,29 @@
+<launch>
+    <env name="JACKAL_LASER" value="1" />
+    <env name="JACKAL_LASER_MOUNT" value="front" />
+
+    <include file="$(find jackal_description)/launch/description.launch">
+        <arg name="config" value="front_laser" />
+    </include>
+  
+    <node pkg="jackal_base" type="jackal_node" name="jackal_node">
+        <rosparam>
+            require:
+                publishers:
+                    - status
+                    - feedback
+                    - imu/data_raw
+                    - navsat/nmea_sentence
+                subscribers:
+                    - cmd_drive
+                    - wifi_connected
+        </rosparam>
+    </node>
+    <node pkg="rosserial_python" type="message_info_service.py" name="rosserial_message_info" />
+
+    <include file="$(find robot_control)/launch/control.launch" />
+
+    <node pkg="diagnostic_aggregator" type="aggregator_node" name="diagnostic_aggregator">
+        <rosparam command="load" file="$(find jackal_base)/config/diagnostic_analyzers.yaml" />
+    </node>
+</launch>

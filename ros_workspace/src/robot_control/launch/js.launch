@@ -1,0 +1,12 @@
+<launch>
+    <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_node">
+        <rosparam>
+            scale_linear: 0.5
+            scale_linear_turbo: 0.5
+            enable_button: 5
+            scale_angular: 1.5
+            axis_linear: 3
+            axis_angular: 2
+        </rosparam>
+    </node>
+</launch>

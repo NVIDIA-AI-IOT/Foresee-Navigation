@@ -1,0 +1,2 @@
+- git: {local-name: robot_localization, uri: 'https://github.com/cra-ros-pkg/robot_localization.git', version: 'kinetic-devel'}
+- git: {local-name: ira_laser_tools, uri: 'https://github.com/iralabdisco/ira_laser_tools', version: 'master'}

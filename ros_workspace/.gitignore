@@ -1,0 +1,19 @@
+nohup.out
+**/nohup.out
+*.bag
+
+# catkin
+build
+devel
+
+# catkin_*_isolated
+build_isolated
+devel_isolated
+install_isolated
+
+
+# cartographer?
+protobuf
+
+# Adafruit
+Adafruit_Python_BNO055

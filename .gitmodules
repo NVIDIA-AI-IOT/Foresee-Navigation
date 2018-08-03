@@ -1,0 +1,3 @@
+[submodule "buildOpenCVTX2"]
+	path = buildOpenCVTX2
+	url = https://github.com/Lytigas/buildOpenCVTX2.git
